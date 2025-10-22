@@ -36,10 +36,11 @@ export const Hero = () => {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-float">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-float">
         <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2">
           <div className="w-1 h-3 bg-white/40 rounded-full animate-pulse" />
         </div>
+        <span className="text-white/40 text-sm font-light tracking-widest">SCROLL ↓</span>
       </div>
     </section>
   );
