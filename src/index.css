@@ -63,21 +63,8 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-['Inter',sans-serif] antialiased;
-    overflow: hidden;
-  }
-  
-  .scroll-container {
-    scroll-behavior: smooth;
-  }
-  
-  /* Hide scrollbar but keep functionality */
-  .scroll-container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .scroll-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
   
   html {

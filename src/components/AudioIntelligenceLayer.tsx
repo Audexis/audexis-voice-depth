@@ -1,4 +1,5 @@
 import { Waves, MessageSquare, Zap, Phone, Bot, Shield, Headphones, TrendingUp } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const coreCapabilities = [
   {
@@ -42,19 +43,59 @@ const possibilities = [
 ];
 
 export const AudioIntelligenceLayer = () => {
+  const { elementRef, scrollProgress } = useScrollAnimation();
+  
+  const scale = 0.95 + scrollProgress * 0.05;
+  const opacity = Math.min(1, scrollProgress * 2);
+  const blur = Math.max(0, 8 - scrollProgress * 8);
+
   return (
-    <section className="relative py-32 px-6 bg-gradient-to-b from-background via-secondary/30 to-background">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-light mb-8 text-center text-gradient">
+    <section 
+      ref={elementRef as React.RefObject<HTMLElement>}
+      className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden"
+      style={{
+        transform: `scale(${scale})`,
+        opacity,
+        filter: `blur(${blur}px)`,
+        transition: 'filter 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
+      }}
+    >
+      {/* Glassmorphic background layers */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
+      <div className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl animate-pulse" 
+           style={{ animationDuration: '7s' }} />
+      <div className="absolute bottom-1/3 right-1/3 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl" 
+           style={{ transform: `rotate(${scrollProgress * 45}deg)` }} />
+      
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <h2 
+          className="text-5xl md:text-6xl font-light mb-8 text-center text-gradient"
+          style={{ 
+            transform: `translateY(${(1 - scrollProgress) * 30}px)`,
+            opacity: opacity 
+          }}
+        >
           The Audio Intelligence Layer
         </h2>
         
-        <p className="text-xl md:text-2xl text-muted-foreground font-light text-center mb-20 max-w-4xl mx-auto">
+        <p 
+          className="text-xl md:text-2xl text-muted-foreground font-light text-center mb-20 max-w-4xl mx-auto"
+          style={{ 
+            transform: `translateY(${(1 - scrollProgress) * 35}px)`,
+            opacity: opacity 
+          }}
+        >
           A unifying layer that listens, understands, and shares meaning with the systems around it.
         </p>
         
         {/* Core Capabilities Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-24">
+        <div 
+          className="grid md:grid-cols-3 gap-8 mb-24"
+          style={{ 
+            transform: `translateY(${(1 - scrollProgress) * 40}px)`,
+            opacity: opacity 
+          }}
+        >
           {coreCapabilities.map((capability, index) => (
             <div
               key={index}
@@ -74,7 +115,13 @@ export const AudioIntelligenceLayer = () => {
         </div>
         
         {/* What Becomes Possible */}
-        <div className="glass-card p-12 rounded-3xl bg-gradient-to-br from-card/60 to-card/40">
+        <div 
+          className="glass-card p-12 rounded-3xl bg-gradient-to-br from-card/60 to-card/40"
+          style={{ 
+            transform: `translateY(${(1 - scrollProgress) * 50}px)`,
+            opacity: opacity 
+          }}
+        >
           <h3 className="text-3xl font-light mb-12 text-center text-gradient">
             What Becomes Possible
           </h3>
