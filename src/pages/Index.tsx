@@ -20,11 +20,11 @@ const Index = () => {
         <Mission />
       </section>
       
-      <section id="capabilities" className="snap-start snap-always min-h-screen flex items-center justify-center px-6">
+      <section id="capabilities" className="snap-start snap-always min-h-screen flex items-start justify-center px-6 py-16 overflow-y-auto">
         <Capabilities />
       </section>
       
-      <section id="audio-intelligence" className="snap-start snap-always min-h-screen flex items-center justify-center px-6">
+      <section id="audio-intelligence" className="snap-start snap-always min-h-screen flex items-start justify-center px-6 py-16 overflow-y-auto">
         <AudioIntelligenceLayer />
       </section>
       

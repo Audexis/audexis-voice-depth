@@ -3,6 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 
 export const Contact = () => {
   const { toast } = useToast();
@@ -10,12 +15,21 @@ export const Contact = () => {
     name: "",
     company: "",
     email: "",
-    datetime: "",
     message: ""
   });
+  const [selectedDate, setSelectedDate] = useState<Date>();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!selectedDate) {
+      toast({
+        title: "Please select a date",
+        description: "Choose a date and time for your call.",
+        variant: "destructive"
+      });
+      return;
+    }
     
     // In a real implementation, this would integrate with a calendar API
     toast({
@@ -23,7 +37,8 @@ export const Contact = () => {
       description: "We look forward to connecting.",
     });
     
-    setFormData({ name: "", company: "", email: "", datetime: "", message: "" });
+    setFormData({ name: "", company: "", email: "", message: "" });
+    setSelectedDate(undefined);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -79,14 +94,30 @@ export const Contact = () => {
           </div>
           
           <div>
-            <Input
-              name="datetime"
-              type="datetime-local"
-              value={formData.datetime}
-              onChange={handleChange}
-              required
-              className="bg-background/50 border-white/10 text-lg py-6 rounded-2xl focus:border-white/30 transition-colors"
-            />
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className={cn(
+                    "w-full justify-start text-left font-normal bg-background/50 border-white/10 text-lg py-6 rounded-2xl hover:border-white/30 transition-colors",
+                    !selectedDate && "text-muted-foreground"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-5 w-5" />
+                  {selectedDate ? format(selectedDate, "PPP") : <span>Pick a date</span>}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={selectedDate}
+                  onSelect={setSelectedDate}
+                  disabled={(date) => date < new Date()}
+                  initialFocus
+                  className="pointer-events-auto"
+                />
+              </PopoverContent>
+            </Popover>
           </div>
           
           <div>
