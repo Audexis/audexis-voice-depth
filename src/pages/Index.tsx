@@ -16,23 +16,23 @@ const Index = () => {
         <Hero />
       </section>
       
-      <section id="mission" className="snap-start snap-always min-h-screen flex items-center">
+      <section id="mission" className="snap-start snap-always min-h-screen flex items-center justify-center px-6">
         <Mission />
       </section>
       
-      <section id="capabilities" className="snap-start snap-always min-h-screen flex items-center">
+      <section id="capabilities" className="snap-start snap-always min-h-screen flex items-center justify-center px-6">
         <Capabilities />
       </section>
       
-      <section id="audio-intelligence" className="snap-start snap-always min-h-screen flex items-center">
+      <section id="audio-intelligence" className="snap-start snap-always min-h-screen flex items-center justify-center px-6">
         <AudioIntelligenceLayer />
       </section>
       
-      <section id="vision" className="snap-start snap-always min-h-screen flex items-center">
+      <section id="vision" className="snap-start snap-always min-h-screen flex items-center justify-center px-6">
         <Vision />
       </section>
       
-      <section id="contact" className="snap-start snap-always min-h-screen flex items-center">
+      <section id="contact" className="snap-start snap-always min-h-screen flex items-center justify-center px-6">
         <Contact />
       </section>
       
