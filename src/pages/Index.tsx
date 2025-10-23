@@ -9,7 +9,7 @@ import { ScrollNavigation } from "@/components/ScrollNavigation";
 
 const Index = () => {
   return (
-    <div id="scroll-container" className="scroll-container snap-y snap-mandatory overflow-y-scroll h-screen">
+    <div id="scroll-container" className="scroll-container min-h-screen bg-background text-foreground snap-y snap-mandatory overflow-y-scroll h-screen">
       <ScrollNavigation />
       
       <section id="hero" className="snap-start snap-always min-h-screen">
