@@ -49,17 +49,33 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative py-32 px-6">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-light mb-6 text-center text-gradient">
+    <section id="contact" className="relative py-32 px-6 section-container overflow-hidden">
+      {/* Ambient background effects */}
+      <div className="absolute inset-0">
+        <div className="ambient-orb ambient-orb-1" style={{ top: '15%', left: '8%', animationDelay: '1.5s' }} />
+        <div className="ambient-orb ambient-orb-2" style={{ bottom: '15%', right: '12%', animationDelay: '3.5s' }} />
+      </div>
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/20 to-transparent" />
+      
+      {/* Radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,_var(--tw-gradient-stops))] from-white/8 via-transparent to-transparent" />
+      
+      <div className="section-glow" />
+      
+      <div className="relative z-10 max-w-2xl mx-auto">
+        <h2 className="text-5xl md:text-6xl font-light mb-6 text-center text-gradient premium-text-shadow animate-fade-in-up">
           Let's Talk.
         </h2>
         
-        <p className="text-xl text-muted-foreground font-light text-center mb-16">
+        <p className="text-xl text-muted-foreground font-light text-center mb-16 animate-fade-in-up [animation-delay:200ms]">
           Book a 30-minute Zoom call with our team to explore what's possible.
         </p>
         
-        <form onSubmit={handleSubmit} className="glass-card p-10 rounded-3xl space-y-6">
+        <form onSubmit={handleSubmit} className="glass-card p-10 rounded-3xl space-y-6 animate-fade-in-up [animation-delay:400ms] hover:shadow-[0_0_80px_rgba(255,255,255,0.1)] transition-all duration-500 relative overflow-hidden">
+          {/* Form glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
           <div>
             <Input
               name="name"

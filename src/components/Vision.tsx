@@ -1,12 +1,26 @@
 export const Vision = () => {
   return (
-    <section className="relative w-full px-6 overflow-hidden">
+    <section className="relative w-full px-6 overflow-hidden section-container">
+      {/* Ambient background effects */}
+      <div className="absolute inset-0">
+        <div className="ambient-orb ambient-orb-1" style={{ animationDelay: '1s' }} />
+        <div className="ambient-orb ambient-orb-2" style={{ animationDelay: '3s' }} />
+      </div>
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/20 to-transparent" />
+      
+      {/* Radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent" />
+      
+      <div className="section-glow" />
+      
       <div className="relative z-10 max-w-5xl mx-auto text-center">
-        <blockquote className="text-4xl md:text-6xl font-light leading-tight mb-8 text-gradient">
+        <blockquote className="text-4xl md:text-6xl font-light leading-tight mb-8 text-gradient premium-text-shadow animate-fade-in-up">
           "The future doesn't just speak — it listens."
         </blockquote>
         
-        <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-3xl mx-auto">
+        <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-3xl mx-auto animate-fade-in-up [animation-delay:200ms]">
           Audexis is where technology learns to understand the human voice at its depth.
         </p>
       </div>

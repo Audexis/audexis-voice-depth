@@ -35,9 +35,20 @@ const capabilities = [
 
 export const Capabilities = () => {
   return (
-    <section className="relative py-32 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-light mb-20 text-center text-gradient">
+    <section className="relative py-32 px-6 section-container overflow-hidden">
+      {/* Ambient background effects */}
+      <div className="absolute inset-0">
+        <div className="ambient-orb ambient-orb-1" style={{ top: '10%', left: '5%' }} />
+        <div className="ambient-orb ambient-orb-2" style={{ bottom: '10%', right: '10%' }} />
+      </div>
+      
+      {/* Gradient mesh */}
+      <div className="absolute inset-0 opacity-40" style={{ background: 'var(--gradient-mesh)' }} />
+      
+      <div className="section-glow" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <h2 className="text-5xl md:text-6xl font-light mb-20 text-center text-gradient premium-text-shadow animate-fade-in-up">
           What We Do.
         </h2>
         
@@ -45,15 +56,18 @@ export const Capabilities = () => {
           {capabilities.map((capability, index) => (
             <div
               key={index}
-              className="glass-card p-10 rounded-3xl group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_50px_rgba(255,255,255,0.1)] hover:scale-[1.02] cursor-default"
+              className="glass-card p-10 rounded-3xl group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,255,255,0.15)] hover:scale-[1.02] cursor-default animate-fade-in-up relative overflow-hidden"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <capability.icon className="w-12 h-12 mb-6 text-white/80 group-hover:text-white transition-colors" />
+              {/* Card glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <capability.icon className="relative z-10 w-12 h-12 mb-6 text-white/80 group-hover:text-white transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
               
-              <h3 className="text-2xl font-medium mb-4">
+              <h3 className="relative z-10 text-2xl font-medium mb-4">
                 {capability.title}
               </h3>
               
-              <p className="text-muted-foreground text-lg font-light leading-relaxed">
+              <p className="relative z-10 text-muted-foreground text-lg font-light leading-relaxed">
                 {capability.description}
               </p>
             </div>
