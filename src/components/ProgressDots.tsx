@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 const sections = [
   { id: "hero", label: "Home" },
   { id: "mission", label: "Mission" },
@@ -9,34 +7,16 @@ const sections = [
   { id: "contact", label: "Contact" }
 ];
 
-export const ProgressDots = () => {
-  const [activeSection, setActiveSection] = useState(0);
+interface ProgressDotsProps {
+  activeIndex?: number;
+}
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-      
-      sections.forEach((section, index) => {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(index);
-          }
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+export const ProgressDots = ({ activeIndex = 0 }: ProgressDotsProps) => {
 
   const scrollToSection = (index: number) => {
-    const element = document.getElementById(sections[index].id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    // Use the exposed slideGoTo function from GSAP hook
+    if ((window as any).slideGoTo) {
+      (window as any).slideGoTo(index);
     }
   };
 
@@ -51,11 +31,11 @@ export const ProgressDots = () => {
           onClick={() => scrollToSection(index)}
           className="group relative"
           aria-label={`Go to ${section.label}`}
-          aria-current={activeSection === index ? "true" : "false"}
+          aria-current={activeIndex === index ? "true" : "false"}
         >
           <div
             className={`rounded-full border-2 transition-all duration-300 ${
-              activeSection === index
+              activeIndex === index
                 ? 'w-5 h-2.5 border-white bg-white/90'
                 : 'w-2.5 h-2.5 border-white/40 bg-transparent hover:border-white/80 hover:scale-125'
             }`}
