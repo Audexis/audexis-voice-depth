@@ -1,6 +1,10 @@
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+
 export const Vision = () => {
+  const sectionRef = useIntersectionObserver({ threshold: 0.15 });
+
   return (
-    <section className="relative w-full px-6 overflow-hidden section-container">
+    <section ref={sectionRef} className="animate-section relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       {/* Ambient background effects */}
       <div className="absolute inset-0">
         <div className="ambient-orb ambient-orb-1" style={{ animationDelay: '1s' }} />
@@ -15,12 +19,12 @@ export const Vision = () => {
       
       <div className="section-glow" />
       
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        <blockquote className="text-4xl md:text-6xl font-light leading-tight mb-8 text-gradient premium-text-shadow animate-fade-in-up">
+      <div className="relative z-10 max-w-5xl mx-auto text-center px-6">
+        <blockquote className="section-heading text-4xl md:text-6xl font-light leading-tight mb-8 text-gradient premium-text-shadow">
           "The future doesn't just speak — it listens."
         </blockquote>
         
-        <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-3xl mx-auto animate-fade-in-up [animation-delay:200ms]">
+        <p className="section-content text-xl md:text-2xl text-muted-foreground font-light max-w-3xl mx-auto">
           Audexis is where technology learns to understand the human voice at its depth.
         </p>
       </div>
