@@ -1,4 +1,5 @@
 import { Sparkles, Brain, Radio, Zap, Palette, Building2 } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const capabilities = [
   {
@@ -50,10 +51,8 @@ export const Capabilities = () => {
       {/* Gradient mesh */}
       <div className="absolute inset-0 opacity-40" style={{ background: 'var(--gradient-mesh)' }} />
       
-      <div className="section-glow" />
-      
       <div className="relative z-10 max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-light mb-20 text-center text-gradient premium-text-shadow animate-fade-in-up">
+        <h2 className="section-heading text-5xl md:text-6xl font-light mb-20 text-center text-gradient premium-text-shadow">
           What We Do.
         </h2>
         
@@ -61,8 +60,8 @@ export const Capabilities = () => {
           {capabilities.map((capability, index) => (
             <div
               key={index}
-              className="glass-card p-10 rounded-3xl group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,255,255,0.15)] hover:scale-[1.02] cursor-default animate-fade-in-up relative overflow-hidden"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="section-card glass-card p-10 rounded-3xl group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,255,255,0.15)] hover:scale-[1.02] cursor-default relative overflow-hidden"
+              style={{ '--stagger-delay': `${index * 100}ms` } as React.CSSProperties}
             >
               {/* Card glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
