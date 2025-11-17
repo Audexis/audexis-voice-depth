@@ -67,21 +67,6 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-['Inter',sans-serif] antialiased;
-    overflow: hidden;
-  }
-  
-  .scroll-container {
-    scroll-behavior: smooth;
-  }
-  
-  /* Hide scrollbar but keep functionality */
-  .scroll-container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .scroll-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
   
   html {
@@ -124,35 +109,71 @@ All colors MUST be HSL.
     50% { transform: translateY(-20px); }
   }
   
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+  /* IntersectionObserver-based animations */
+  .animate-section {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: none;
+  }
+  
+  .animate-section:not(.in-view) .section-heading {
     opacity: 0;
+    transform: translateY(18px) scale(0.995);
+    transition: transform 650ms cubic-bezier(0.2, 0.9, 0.25, 1), opacity 500ms ease;
+    will-change: transform, opacity;
   }
   
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .animate-section.in-view .section-heading {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
   
-  .animate-scale-in {
-    animation: scaleIn 0.5s ease-out forwards;
+  .animate-section:not(.in-view) .section-content {
     opacity: 0;
+    transform: translateY(18px) scale(0.995);
+    transition: transform 650ms cubic-bezier(0.2, 0.9, 0.25, 1) 100ms, opacity 500ms ease 100ms;
+    will-change: transform, opacity;
   }
   
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
+  .animate-section.in-view .section-content {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  .animate-section:not(.in-view) .section-cta {
+    opacity: 0;
+    transform: translateY(18px) scale(0.995);
+    transition: transform 650ms cubic-bezier(0.2, 0.9, 0.25, 1) 200ms, opacity 500ms ease 200ms;
+    will-change: transform, opacity;
+  }
+  
+  .animate-section.in-view .section-cta {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  .animate-section:not(.in-view) .section-card {
+    opacity: 0;
+    transform: translateY(18px) scale(0.995);
+    transition: transform 650ms cubic-bezier(0.2, 0.9, 0.25, 1), opacity 500ms ease;
+    transition-delay: var(--stagger-delay, 0ms);
+    will-change: transform, opacity;
+  }
+  
+  .animate-section.in-view .section-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-section:not(.in-view) .section-heading,
+    .animate-section:not(.in-view) .section-content,
+    .animate-section:not(.in-view) .section-cta,
+    .animate-section:not(.in-view) .section-card {
+      transition: none;
+      transform: none;
       opacity: 1;
-      transform: scale(1);
     }
   }
   
@@ -182,18 +203,6 @@ All colors MUST be HSL.
     animation-delay: 2s;
   }
   
-  .section-glow {
-    position: absolute;
-    inset: 0;
-    background: var(--gradient-ambient);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-  }
-  
-  .section-container:hover .section-glow {
-    opacity: 1;
-  }
   
   .premium-text-shadow {
     text-shadow: 0 0 40px hsl(0 0% 100% / 0.1);

@@ -1,4 +1,5 @@
 import { Waves, MessageSquare, Zap, Phone, Bot, Shield, Headphones, TrendingUp } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const coreCapabilities = [
   {
@@ -42,8 +43,13 @@ const possibilities = [
 ];
 
 export const AudioIntelligenceLayer = () => {
+  const sectionRef = useIntersectionObserver({ threshold: 0.15 });
+  
   return (
-    <section className="relative py-32 px-6 section-container overflow-hidden bg-gradient-to-b from-background via-secondary/30 to-background">
+    <section 
+      ref={sectionRef}
+      className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-background via-secondary/30 to-background"
+    >
       {/* Enhanced ambient effects */}
       <div className="absolute inset-0">
         <div className="ambient-orb ambient-orb-1" style={{ top: '30%', left: '15%', animationDelay: '0.5s' }} />
@@ -59,11 +65,11 @@ export const AudioIntelligenceLayer = () => {
       <div className="section-glow" />
       
       <div className="relative z-10 max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-light mb-8 text-center text-gradient premium-text-shadow animate-fade-in-up">
+        <h2 className="section-heading text-5xl md:text-6xl font-light mb-8 text-center text-gradient premium-text-shadow">
           The Audio Intelligence Layer
         </h2>
         
-        <p className="text-xl md:text-2xl text-muted-foreground font-light text-center mb-20 max-w-4xl mx-auto animate-fade-in-up [animation-delay:200ms]">
+        <p className="section-content text-xl md:text-2xl text-muted-foreground font-light text-center mb-20 max-w-4xl mx-auto">
           A unifying layer that listens, understands, and shares meaning with the systems around it.
         </p>
         
@@ -72,8 +78,8 @@ export const AudioIntelligenceLayer = () => {
           {coreCapabilities.map((capability, index) => (
             <div
               key={index}
-              className="glass-card p-10 rounded-3xl group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,255,255,0.15)] hover:scale-[1.02] cursor-default animate-fade-in-up relative overflow-hidden"
-              style={{ animationDelay: `${300 + index * 100}ms` }}
+              className="section-card glass-card p-10 rounded-3xl group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,255,255,0.15)] hover:scale-[1.02] cursor-default relative overflow-hidden"
+              style={{ '--stagger-delay': `${index * 100}ms` } as React.CSSProperties}
             >
               {/* Card glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -91,7 +97,7 @@ export const AudioIntelligenceLayer = () => {
         </div>
         
         {/* What Becomes Possible */}
-        <div className="glass-card p-12 rounded-3xl bg-gradient-to-br from-card/60 to-card/40 animate-fade-in-up relative overflow-hidden" style={{ animationDelay: '600ms' }}>
+        <div className="section-card glass-card p-12 rounded-3xl bg-gradient-to-br from-card/60 to-card/40 relative overflow-hidden">
           {/* Inner glow */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent pointer-events-none" />
           <h3 className="relative z-10 text-3xl font-light mb-12 text-center text-gradient premium-text-shadow">

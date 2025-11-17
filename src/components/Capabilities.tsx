@@ -34,8 +34,13 @@ const capabilities = [
 ];
 
 export const Capabilities = () => {
+  const sectionRef = useIntersectionObserver({ threshold: 0.15 });
+  
   return (
-    <section className="relative py-32 px-6 section-container overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="relative py-32 px-6 overflow-hidden"
+    >
       {/* Ambient background effects */}
       <div className="absolute inset-0">
         <div className="ambient-orb ambient-orb-1" style={{ top: '10%', left: '5%' }} />

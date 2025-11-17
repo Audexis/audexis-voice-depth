@@ -1,13 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { WaveformAnimation } from "./WaveformAnimation";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 export const Hero = () => {
+  const sectionRef = useIntersectionObserver({ threshold: 0.2 });
+  
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* Animated background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/20">
         <WaveformAnimation />
@@ -18,18 +24,18 @@ export const Hero = () => {
       
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <h1 className="text-6xl md:text-8xl font-light tracking-tight mb-8 animate-fade-in-up text-gradient">
+        <h1 className="section-heading text-6xl md:text-8xl font-light tracking-tight mb-8 text-gradient">
           Intelligence That Listens.
         </h1>
         
-        <p className="text-xl md:text-2xl text-muted-foreground font-light mb-12 animate-fade-in-up [animation-delay:200ms] max-w-3xl mx-auto">
+        <p className="section-content text-xl md:text-2xl text-muted-foreground font-light mb-12 max-w-3xl mx-auto">
           Transforming voice into understanding, in real time.
         </p>
         
         <Button 
           onClick={scrollToContact}
           size="lg"
-          className="glass-button text-lg px-12 py-6 rounded-full animate-fade-in-up [animation-delay:400ms] hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+          className="section-cta glass-button text-lg px-12 py-6 rounded-full hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
         >
           Book a Call
         </Button>
