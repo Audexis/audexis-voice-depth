@@ -1,5 +1,7 @@
 import { Waves, MessageSquare, Zap, Phone, Bot, Shield, Headphones, TrendingUp } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { AudioParticles } from "./AudioParticles";
+import { SoundWaves } from "./SoundWaves";
 
 const coreCapabilities = [
   {
@@ -47,6 +49,10 @@ export const AudioIntelligenceLayer = () => {
   
   return (
     <section ref={sectionRef} className="animate-section relative py-32 px-6 section-container overflow-hidden bg-gradient-to-b from-background via-secondary/30 to-background">
+      {/* Parallax audio effects */}
+      <AudioParticles density="medium" />
+      <SoundWaves />
+      
       {/* Enhanced ambient effects */}
       <div className="absolute inset-0">
         <div className="ambient-orb ambient-orb-1" style={{ top: '30%', left: '15%', animationDelay: '0.5s' }} />
