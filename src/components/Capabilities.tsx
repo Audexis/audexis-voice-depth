@@ -6,7 +6,7 @@ const capabilities = [
   {
     icon: Brain,
     title: "AI-Driven Voice Intelligence",
-    description: "Systems that understand speech in real time — the meaning, tone, and emotion behind every word."
+    description: "Systems that understand speech in real time: the meaning, tone, and emotion behind every word."
   },
   {
     icon: Sparkles,
@@ -16,7 +16,7 @@ const capabilities = [
   {
     icon: Radio,
     title: "Acoustic Signal Analysis",
-    description: "Interpreting sound beyond speech — environment, background, and emotion — in real-world conditions."
+    description: "Interpreting sound beyond speech: environment, background, and emotion, in real-world conditions."
   },
   {
     icon: Zap,
@@ -26,12 +26,12 @@ const capabilities = [
   {
     icon: Palette,
     title: "AI Studio (VoiceTech Creation)",
-    description: "A creative and technical lab where we design and build next-generation products powered by our voice technology — from intelligent call systems to emotion-aware assistants and real-time conversational interfaces. Each creation begins with sound, and ends with understanding."
+    description: "A creative and technical lab where we design and build next-generation products powered by our voice technology, from intelligent call systems to emotion-aware assistants and real-time conversational interfaces. Each creation begins with sound, and ends with understanding."
   },
   {
     icon: Building2,
     title: "Enterprise Voice Solutions",
-    description: "Tailored implementations of our systems for businesses. We deploy and adapt our voice intelligence layer to enterprise needs — powering analytics, operations, and decision systems that listen and respond with context."
+    description: "Tailored implementations of our systems for businesses. We deploy and adapt our voice intelligence layer to enterprise needs: powering analytics, operations, and decision systems that listen and respond with context."
   }
 ];
 

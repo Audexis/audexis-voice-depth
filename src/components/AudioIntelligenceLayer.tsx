@@ -7,7 +7,7 @@ const coreCapabilities = [
   {
     icon: Waves,
     title: "Signal to Meaning",
-    description: "From raw audio to structured understanding — words, tone, context, intent."
+    description: "From raw audio to structured understanding: words, tone, context, intent."
   },
   {
     icon: MessageSquare,
@@ -17,7 +17,7 @@ const coreCapabilities = [
   {
     icon: Zap,
     title: "Real-Time Decisions",
-    description: "The layer enables intelligent reactions, safety cues, and adaptive workflows — instantly, without repeated input."
+    description: "The layer enables intelligent reactions, safety cues, and adaptive workflows instantly, without repeated input."
   }
 ];
 

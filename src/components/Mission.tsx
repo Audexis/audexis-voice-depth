@@ -31,7 +31,7 @@ export const Mission = () => {
         </h2>
         
         <p className="section-content text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">
-          At Audexis, we're building systems that truly listen — understanding not just what's said, but how it's said. 
+          At Audexis, we're building systems that truly listen: understanding not just what's said, but how it's said. 
           We bring together advanced AI and acoustic intelligence to power the next generation of human-machine communication.
         </p>
       </div>

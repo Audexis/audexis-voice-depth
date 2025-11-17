@@ -27,7 +27,7 @@ export const Vision = () => {
       
       <div className="relative z-10 max-w-5xl mx-auto text-center px-6">
         <blockquote className="section-heading text-4xl md:text-6xl font-light leading-tight mb-8 text-gradient premium-text-shadow">
-          "The future doesn't just speak — it listens."
+          "The future doesn't just speak, it listens."
         </blockquote>
         
         <p className="section-content text-xl md:text-2xl text-muted-foreground font-light max-w-3xl mx-auto">
