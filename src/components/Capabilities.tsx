@@ -1,4 +1,5 @@
 import { Sparkles, Brain, Radio, Zap, Palette, Building2 } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const capabilities = [
   {
@@ -34,8 +35,10 @@ const capabilities = [
 ];
 
 export const Capabilities = () => {
+  const sectionRef = useIntersectionObserver({ threshold: 0.1 });
+  
   return (
-    <section className="relative py-32 px-6 section-container overflow-hidden">
+    <section ref={sectionRef} className="animate-section relative py-32 px-6 section-container overflow-hidden">
       {/* Ambient background effects */}
       <div className="absolute inset-0">
         <div className="ambient-orb ambient-orb-1" style={{ top: '10%', left: '5%' }} />
@@ -48,7 +51,7 @@ export const Capabilities = () => {
       <div className="section-glow" />
       
       <div className="relative z-10 max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-light mb-20 text-center text-gradient premium-text-shadow animate-fade-in-up">
+        <h2 className="section-heading text-5xl md:text-6xl font-light mb-20 text-center text-gradient premium-text-shadow">
           What We Do.
         </h2>
         
@@ -56,7 +59,7 @@ export const Capabilities = () => {
           {capabilities.map((capability, index) => (
             <div
               key={index}
-              className="glass-card p-10 rounded-3xl group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,255,255,0.15)] hover:scale-[1.02] cursor-default animate-fade-in-up relative overflow-hidden"
+              className="section-card glass-card p-10 rounded-3xl group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_80px_rgba(255,255,255,0.15)] hover:scale-[1.02] cursor-default relative overflow-hidden"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Card glow effect */}
