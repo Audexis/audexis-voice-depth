@@ -1,10 +1,16 @@
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { AudioParticles } from "./AudioParticles";
+import { SoundWaves } from "./SoundWaves";
 
 export const Mission = () => {
   const sectionRef = useIntersectionObserver({ threshold: 0.15 });
 
   return (
     <section ref={sectionRef} className="animate-section relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Parallax audio particles */}
+      <AudioParticles density="medium" />
+      <SoundWaves />
+      
       {/* Ambient background effects */}
       <div className="absolute inset-0">
         <div className="ambient-orb ambient-orb-1" />

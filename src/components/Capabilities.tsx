@@ -1,5 +1,6 @@
 import { Sparkles, Brain, Radio, Zap, Palette, Building2 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { AudioParticles } from "./AudioParticles";
 
 const capabilities = [
   {
@@ -39,6 +40,9 @@ export const Capabilities = () => {
   
   return (
     <section ref={sectionRef} className="animate-section relative py-32 px-6 section-container overflow-hidden">
+      {/* Parallax audio particles */}
+      <AudioParticles density="high" />
+      
       {/* Ambient background effects */}
       <div className="absolute inset-0">
         <div className="ambient-orb ambient-orb-1" style={{ top: '10%', left: '5%' }} />
